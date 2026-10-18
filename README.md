@@ -2,6 +2,8 @@
 
 SmartPrep is a responsive study-planning MVP for GATE and semester exam preparation. It turns an exam date, daily study availability, and focus topics into a day-by-day schedule with review sessions, then tracks quiz performance and exam readiness.
 
+**Live demo:** <https://smartprep-y6zy.onrender.com> · **Source:** <https://github.com/aditiyes/smartprep-adaptive-study-planner>
+
 ## What works
 
 - Responsive dashboard, weekly schedule, syllabus tracker, analytics, study assistant, and downloadable study report.
