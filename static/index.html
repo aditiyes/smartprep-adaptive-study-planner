@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="A calmer, smarter study plan for your next exam.">
+  <title>SmartPrep — Study with a plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-view="dashboard">
+        <span class="brand-mark">S</span><span>smartprep<span class="brand-dot">.</span></span>
+      </a>
+      <div class="sidebar-caption">STUDY SPACE</div>
+      <nav class="navigation" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-view="planner"><span class="nav-icon">▦</span>Study planner</button>
+        <button class="nav-item" data-view="syllabus"><span class="nav-icon">◫</span>Syllabus</button>
+        <button class="nav-item" data-view="practice"><span class="nav-icon">✳</span>Practice</button>
+        <button class="nav-item" data-view="analytics"><span class="nav-icon">⌁</span>Analytics</button>
+        <button class="nav-item" data-view="assistant"><span class="nav-icon">✧</span>Study assistant</button>
+        <button class="nav-item" data-view="reports"><span class="nav-icon">▤</span>Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="streak-card">
+          <div class="streak-icon">✦</div>
+          <div><strong>Keep your streak</strong><span>Small steps add up.</span></div>
+          <span class="streak-count">03</span>
+        </div>
+        <div class="profile-card">
+          <div class="avatar">AK</div>
+          <div class="profile-text"><strong>My study space</strong><span>GATE · Computer Science</span></div>
+          <span class="profile-more">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="menu-toggle" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb">Study space <span>/</span> <strong id="page-name">Overview</strong></div>
+        <div class="topbar-right"><span class="today-label" id="today-label"></span><button class="icon-button" id="help-button" aria-label="About SmartPrep">?</button></div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-row">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT STEP, MADE CLEAR</div><h1>Good to see you, <span>scholar.</span></h1><p class="subheading">A little progress today makes a big difference tomorrow.</p></div>
+          <button class="button button-primary" data-view="planner"><span>＋</span> Build my study plan</button>
+        </div>
+        <div class="hero-card">
+          <div class="hero-copy"><div class="hero-kicker">YOUR EXAM COUNTDOWN <span class="live-dot"></span></div><h2><span id="countdown">—</span> <small>days to go</small></h2><p id="exam-subtitle">Your next milestone is closer than it feels.</p><button class="text-button" data-view="planner">See your plan <span>→</span></button></div>
+          <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="orbit-center">✦</div><span class="orbit-label label-one">FOCUS</span><span class="orbit-label label-two">REVIEW</span><span class="orbit-label label-three">GROW</span></div>
+          <div class="hero-side"><div class="hero-side-label">THIS WEEK</div><div class="hero-progress"><div class="progress-ring" id="weekly-ring"><span id="weekly-percent">0%</span></div><div><strong id="weekly-hours">0 / 12 hrs</strong><span>study time</span></div></div><div class="hero-divider"></div><div class="hero-side-label">YOUR MOMENTUM</div><div class="momentum"><span>↗</span><strong>Building steadily</strong></div></div>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric-card"><div class="metric-top"><span>Study hours</span><span class="metric-icon mint">◷</span></div><strong id="metric-hours">0<span> hrs</span></strong><div class="metric-foot"><span class="trend-up">↗</span> planned this week</div><div class="sparkline spark-mint"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Syllabus covered</span><span class="metric-icon lilac">◫</span></div><strong id="metric-syllabus">0<span>%</span></strong><div class="metric-foot"><span id="metric-topics">0 of 9 topics</span></div><div class="metric-progress"><i id="syllabus-progress"></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Quiz accuracy</span><span class="metric-icon peach">✳</span></div><strong id="metric-accuracy">—<span>%</span></strong><div class="metric-foot"><span id="quiz-message">Try a quick quiz to start</span></div><div class="sparkline spark-peach"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Topics to revisit</span><span class="metric-icon yellow">↻</span></div><strong id="metric-weak">2<span> topics</span></strong><div class="metric-foot"><span>Personalized focus list</span></div><button class="tiny-link" data-view="syllabus">View topics →</button></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel today-panel"><div class="panel-heading"><div><div class="section-kicker">YOUR FOCUS</div><h3>Today’s study plan</h3></div><button class="subtle-link" data-view="planner">View calendar →</button></div><div id="today-sessions" class="session-list"></div><div class="panel-footer"><span id="today-total">No sessions scheduled yet</span><button class="button button-soft" id="complete-next">Mark next done <span>✓</span></button></div></article>
+          <article class="panel readiness-panel"><div class="panel-heading"><div><div class="section-kicker">A LITTLE PERSPECTIVE</div><h3>Exam readiness</h3></div><span class="readiness-badge">LIVE</span></div><div class="readiness-score"><div class="readiness-number"><strong id="readiness-score">—</strong><span>/ 100</span></div><span class="readiness-label" id="readiness-label">Getting started</span></div><div class="readiness-track"><i id="readiness-bar"></i></div><p id="readiness-tip">Your readiness updates as you study and practice.</p><div class="readiness-footer"><span>Completion</span><strong id="readiness-completion">0%</strong></div></article>
+        </div>
+        <article class="panel week-panel"><div class="panel-heading"><div><div class="section-kicker">YOUR ROUTINE</div><h3>This week at a glance</h3></div><div class="chart-legend"><span><i class="legend-planned"></i> Planned</span><span><i class="legend-done"></i> Completed</span></div></div><div class="week-chart" id="week-chart"></div></article>
+      </section>
+
+      <section class="page" id="page-planner">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A PLAN THAT FITS YOUR LIFE</div><h1>Study planner</h1><p class="subheading">Turn your goals into a realistic rhythm, one day at a time.</p></div></div>
+        <div class="planner-layout">
+          <article class="panel planner-form-panel"><div class="panel-heading"><div><div class="section-kicker">YOUR PARAMETERS</div><h3>Let’s make it personal</h3></div><span class="step-pill">01 / 02</span></div><form id="planner-form">
+            <label class="field-label" for="exam-date">When is your exam?</label><input class="input" id="exam-date" type="date" required>
+            <div class="field-row"><div class="field-grow"><label class="field-label" for="daily-hours">Study hours per day</label><div class="range-row"><input id="daily-hours" type="range" min="1" max="10" value="4"><span class="range-value"><b id="hours-value">4</b> hrs</span></div><div class="range-ends"><span>1 hr</span><span>10 hrs</span></div></div></div>
+            <label class="field-label field-gap">Topics you want to focus on <span class="optional-label">SELECT ANY</span></label><div class="topic-chips" id="weak-topic-options"></div>
+            <button class="button button-primary button-wide" type="submit"><span>✦</span> Generate my plan</button><p class="form-note">Your plan is calculated around your daily limit and exam date.</p>
+          </form></article>
+          <article class="panel planner-preview"><div class="panel-heading"><div><div class="section-kicker">UP NEXT</div><h3>Your upcoming sessions</h3></div><span class="session-count" id="session-count">0 sessions</span></div><div id="upcoming-sessions" class="session-list long-list"></div><div class="planner-note"><span>✧</span><p><strong>Built around you.</strong> Higher-weight and focus topics get more attention, with spaced reviews added to help ideas stick.</p></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-syllabus">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR LEARNING MAP</div><h1>Syllabus tracker</h1><p class="subheading">See what’s covered, what’s next, and where to spend your energy.</p></div><button class="button button-soft" id="refresh-plan">↻ Refresh plan</button></div>
+        <div class="syllabus-summary"><div><span>OVERALL COVERAGE</span><strong id="syllabus-big-percent">0%</strong></div><div class="syllabus-overall"><div class="metric-progress"><i id="syllabus-big-progress"></i></div><small id="syllabus-progress-label">A steady start is still a start.</small></div><div class="summary-divider"></div><div class="summary-stat"><span>Topics</span><strong id="syllabus-count">9</strong></div><div class="summary-stat"><span>Focus areas</span><strong id="focus-count">2</strong></div></div>
+        <article class="panel syllabus-panel"><div class="panel-heading"><div><div class="section-kicker">GATE COMPUTER SCIENCE</div><h3>Your topics</h3></div><div class="filter-pills"><button class="filter-pill active" data-filter="all">All</button><button class="filter-pill" data-filter="focus">Focus topics</button><button class="filter-pill" data-filter="complete">Completed</button></div></div><div class="table-scroll"><table class="topic-table"><thead><tr><th>SUBJECT</th><th>TOPIC</th><th>PRIORITY</th><th>EST. TIME</th><th>STATUS</th><th></th></tr></thead><tbody id="topic-table-body"></tbody></table></div></article>
+      </section>
+
+      <section class="page" id="page-practice">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> LEARN BY DOING</div><h1>Quick practice</h1><p class="subheading">A few questions can tell you a lot about what’s sticking.</p></div></div>
+        <div class="practice-layout"><article class="panel quiz-card"><div class="panel-heading"><div><div class="section-kicker">5 QUESTION CHECK-IN</div><h3>Operating Systems · Scheduling</h3></div><span class="timer-pill">◷ &nbsp; ~3 min</span></div><form id="quiz-form"><div class="question" data-answer="b"><div class="question-number">01 <span>OF 05</span></div><p>Which scheduling algorithm may cause starvation for processes with a low priority?</p><label><input type="radio" name="q1" value="a"><span class="radio-dot"></span> Round Robin</label><label><input type="radio" name="q1" value="b"><span class="radio-dot"></span> Priority scheduling</label><label><input type="radio" name="q1" value="c"><span class="radio-dot"></span> FCFS</label></div><div class="question" data-answer="c"><div class="question-number">02 <span>OF 05</span></div><p>What is the main purpose of aging in a priority scheduler?</p><label><input type="radio" name="q2" value="a"><span class="radio-dot"></span> Reduce context switching</label><label><input type="radio" name="q2" value="b"><span class="radio-dot"></span> Increase throughput</label><label><input type="radio" name="q2" value="c"><span class="radio-dot"></span> Prevent indefinite waiting</label></div><div class="question" data-answer="a"><div class="question-number">03 <span>OF 05</span></div><p>In Round Robin, what determines how long a process runs before preemption?</p><label><input type="radio" name="q3" value="a"><span class="radio-dot"></span> Time quantum</label><label><input type="radio" name="q3" value="b"><span class="radio-dot"></span> Process priority</label><label><input type="radio" name="q3" value="c"><span class="radio-dot"></span> CPU burst count</label></div><div class="question" data-answer="b"><div class="question-number">04 <span>OF 05</span></div><p>Which metric measures the time from submission to completion?</p><label><input type="radio" name="q4" value="a"><span class="radio-dot"></span> Response time</label><label><input type="radio" name="q4" value="b"><span class="radio-dot"></span> Turnaround time</label><label><input type="radio" name="q4" value="c"><span class="radio-dot"></span> Waiting time</label></div><div class="question" data-answer="c"><div class="question-number">05 <span>OF 05</span></div><p>Which state does a process enter after its time quantum expires?</p><label><input type="radio" name="q5" value="a"><span class="radio-dot"></span> Terminated</label><label><input type="radio" name="q5" value="b"><span class="radio-dot"></span> Waiting</label><label><input type="radio" name="q5" value="c"><span class="radio-dot"></span> Ready</label></div><div class="quiz-result" id="quiz-result" hidden></div><button class="button button-primary button-wide" type="submit">Check my answers <span>→</span></button></form></article><aside class="practice-aside"><div class="panel aside-tip"><div class="tip-symbol">✧</div><div class="section-kicker">A GOOD HABIT</div><h3>Recall before you review.</h3><p>Try to answer from memory first. The effort of recalling makes learning last longer.</p></div><div class="panel aside-stat"><div class="section-kicker">YOUR RECENT PRACTICE</div><strong id="practice-accuracy">—</strong><span>average accuracy</span><div class="metric-progress"><i id="practice-progress"></i></div><button class="subtle-link" data-view="analytics">See your insights →</button></div></aside></div>
+      </section>
+
+      <section class="page" id="page-analytics">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> PROGRESS, NOT PERFECTION</div><h1>Your analytics</h1><p class="subheading">Understand your patterns and make your next study hour count.</p></div></div>
+        <div class="analytics-kpis"><div class="panel analytics-kpi"><span>Readiness score</span><strong id="analytics-readiness">—</strong><small>Based on your learning data</small></div><div class="panel analytics-kpi"><span>Completed sessions</span><strong id="analytics-sessions">0</strong><small>One session at a time</small></div><div class="panel analytics-kpi"><span>Quiz average</span><strong id="analytics-quiz">—</strong><small>Across your attempts</small></div></div>
+        <div class="analytics-grid"><article class="panel"><div class="panel-heading"><div><div class="section-kicker">BY SUBJECT</div><h3>Where you’re spending time</h3></div></div><div class="subject-bars" id="subject-bars"></div></article><article class="panel"><div class="panel-heading"><div><div class="section-kicker">YOUR NEXT BEST MOVE</div><h3>Focus recommendations</h3></div></div><div id="recommendations" class="recommendations"></div></article></div>
+      </section>
+
+      <section class="page" id="page-assistant">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> A HELPFUL STUDY COMPANION</div><h1>Study assistant</h1><p class="subheading">Get practical guidance based on the plan you’ve built.</p></div></div>
+        <div class="assistant-layout"><article class="panel chat-panel"><div class="chat-header"><div class="assistant-avatar">✧</div><div><strong>SmartPrep guide</strong><span><i></i> Ready when you are</span></div><span class="ai-note">PLANNING GUIDE</span></div><div class="chat-messages" id="chat-messages"><div class="chat-bubble assistant-bubble"><div class="bubble-avatar">✧</div><p>Hi! I can help you prioritize a topic, make a revision plan, or explain how your schedule is put together. What would you like to work on?</p></div></div><div class="suggestion-row"><button class="suggestion-chip">What should I focus on?</button><button class="suggestion-chip">How should I revise?</button><button class="suggestion-chip">Explain my plan</button></div><form id="assistant-form" class="chat-input"><input id="assistant-question" type="text" maxlength="500" placeholder="Ask a study-planning question…" required><button class="send-button" aria-label="Send message">↑</button></form><p class="chat-disclaimer">SmartPrep guide uses built-in study-planning rules. It is not an LLM tutor.</p></article><aside class="panel assistant-context"><div class="section-kicker">YOUR CURRENT CONTEXT</div><h3>Study snapshot</h3><div class="context-row"><span>Exam countdown</span><strong id="context-countdown">—</strong></div><div class="context-row"><span>Daily availability</span><strong id="context-hours">4 hours</strong></div><div class="context-row"><span>Focus topics</span><strong id="context-focus">2 selected</strong></div><button class="subtle-link" data-view="planner">Update your plan →</button></aside></div>
+      </section>
+
+      <section class="page" id="page-reports">
+        <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR PROGRESS, IN ONE PLACE</div><h1>Study reports</h1><p class="subheading">Keep a snapshot of your plan and progress for later.</p></div></div>
+        <div class="reports-layout"><article class="panel report-feature"><div class="report-icon">▤</div><div class="section-kicker">PERSONAL STUDY SUMMARY</div><h2>Your progress, thoughtfully organized.</h2><p>Download a plain-text summary of your exam date, study availability, completed sessions, and topic progress.</p><button class="button button-primary" id="download-report">Download my report <span>↓</span></button><span class="report-format">TEXT REPORT · PRIVATE TO THIS DEVICE</span></article><article class="panel report-details"><div class="section-kicker">INCLUDED IN YOUR REPORT</div><div class="report-row"><span>◷</span><div><strong>Your study plan</strong><small>Upcoming sessions and target hours</small></div></div><div class="report-row"><span>◫</span><div><strong>Syllabus progress</strong><small>Completed topics and current focus</small></div></div><div class="report-row"><span>✳</span><div><strong>Practice summary</strong><small>Quiz attempts and average accuracy</small></div></div><div class="report-privacy">Your data stays in your browser. SmartPrep does not upload your study history.</div></article></div>
+      </section>
+
+      <footer class="page-footer"><span>Made for your next big goal <b>✦</b></span><span>SmartPrep <i>·</i> Your plan, your pace.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
